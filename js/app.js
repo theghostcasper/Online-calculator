@@ -50,7 +50,7 @@
 		else if(key == 15){
 			document.querySelector('.ndiv').click();
 		}
-		else if(key == -29){
+		else if(key == -29 || key == -69){
 			document.querySelector('.nc').click();
 		}
 		else if(key == -83){
