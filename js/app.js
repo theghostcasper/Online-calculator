@@ -31,6 +31,9 @@ function showOperation(){
 }
 
 function calc(){
-
+	if(calcArray[calcArray.length-1] > '9' || calcArray[calcArray.length-1] < '0' )
+		calcArray.pop();
+	result = eval(calcArray.join(''));
+	showResult();
 }
 calcArray.__proto__.calc  = calc;
