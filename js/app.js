@@ -5,16 +5,24 @@ buttons.forEach(function(button){
 	button.addEventListener('click',function(event){
 		if(event.target.innerText == 'C')
 		{
-			calcArray = []
+			calcArray = [];
+			result = '';
 			showOperation();
+			showResult();
 		}
 		else if(event.target.innerText != '='){
 			calcArray.push(event.target.innerText)
-			showOperation();				
+			showOperation();
+			showResult();			
 		}
 		if(event.target.innerText == '='){
 			calcArray = [calcArray.calc()];
+			if(calcArray[0] == undefined)
+				calcArray[0]='';
+			if(result == undefined)
+				result = '';
 			showOperation();
+			showResult();
 		}
 	});
 })
@@ -31,9 +39,10 @@ function showOperation(){
 }
 
 function calc(){
-	if(calcArray[calcArray.length-1] > '9' || calcArray[calcArray.length-1] < '0' )
-		calcArray.pop();
-	result = eval(calcArray.join(''));
+	if(this[this.length-1] > '9' || this[this.length-1] < '0' )
+		this.pop();
+	result = eval(this.join(''));
 	showResult();
+	return result;
 }
 calcArray.__proto__.calc  = calc;
