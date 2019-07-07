@@ -30,3 +30,7 @@ function showOperation(){
 	screen.innerText = operations;
 }
 
+function calc(){
+
+}
+calcArray.__proto__.calc  = calc;
