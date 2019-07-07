@@ -14,6 +14,10 @@
 				result = '';
 			}
 			else if(event.target.innerText != '='){
+				if(calcArray.length == 1 && calcArray[0] == result){
+					if(event.target.innerText<=9 && event.target.innerText>=0)
+						calcArray = []
+				}
 				calcArray.push(event.target.innerText)			
 			}
 			if(event.target.innerText == '='){
@@ -29,7 +33,6 @@
 	})
 	document.addEventListener('keydown',function(event){
 		let key = event.keyCode - 96;
-		console.log(key);
 		buttons.forEach(function(button){
 			if(key == button.attributes[0].value[6]){
 				button.click();
