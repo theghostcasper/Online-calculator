@@ -6,10 +6,27 @@ buttons.forEach(function(button){
 		if(event.target.innerText == 'C')
 		{
 			calcArray = []
+			showOperation();
 		}
-		else{
-			calcArray.push(event.target.innerText)				
+		else if(event.target.innerText != '='){
+			calcArray.push(event.target.innerText)
+			showOperation();				
+		}
+		if(event.target.innerText == '='){
+			calcArray = [calcArray.calc()];
+			showOperation();
 		}
 	});
 })
+
+
+function showResult(){
+	let screen = document.querySelector('#resultScreen');
+	screen.innerText = result;
+}
+function showOperation(){
+	let screen = document.querySelector('#operationScreen');
+	let operations = calcArray.join('');
+	screen.innerText = operations;
+}
 
