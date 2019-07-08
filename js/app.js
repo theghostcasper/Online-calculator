@@ -55,6 +55,7 @@
 		}
 		return {
 			values,
+			join,
 			clear,
 			add,
 			removeDuplicateOperation,
@@ -115,8 +116,8 @@
 
 	/* Code logic */
 	let calculator = new Calculator()
-	let operationScreen = new Screen(document.querySelector('operationScreen'));
-	let resultScreen = new Screen('resultScreen');
+	let operationScreen = new Screen(document.querySelector('#operationScreen'));
+	let resultScreen = new Screen(document.querySelector('#resultScreen'));
 
 
 	let buttons = document.querySelectorAll('button');
@@ -134,6 +135,14 @@
 			}
 		})
 	})
+
+	function startCalculator(){
+		setInterval(function show(){
+			operationScreen.show(calculator.join())
+			resultScreen.show(calculator.result)
+		},10)
+	}
+	startCalculator()
 
 
 
