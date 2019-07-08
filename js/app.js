@@ -38,13 +38,13 @@
 			}
 			/* This loop decrements the toSplice array every step, because while removing 
 			data from the array, the array size is reduces, and so the indexes locations */
-			for(let i=0, n=toSplice.length;i<n; i++){
-				toSplice[i]-=i;
+			if(toSplice.length > 0)
+			{
+				for(let i=0, n=toSplice.length;i<n; i++){
+					toSplice[i]-=i;
+					this.values.splice(toSplice[i],1)
+				}
 			}
-			/* This loop finally splices the duplicate items in the array */
-			toSplice.forEach(function(item){
-				this.values.splice(item,1)
-			})
 		}
 		function calculate(){
 			/* If the last item in the values array is an operation, then remove that operation. */
@@ -125,6 +125,7 @@
 		button.addEventListener('click',function(event){
 			let buttonValue = event.target.innerText
 			if(buttonValue == '='){
+				calculator.removeDuplicateOperation();
 				equalFlag = 1;
 				calculator.calculate()
 			} else if(buttonValue == 'C'){
@@ -160,6 +161,7 @@
 
 
 		setInterval(function(){
+			calculator.removeDuplicateOperation();
 			operationScreen.show(calculator.join())
 			resultScreen.show(calculator.result)
 		},100)
