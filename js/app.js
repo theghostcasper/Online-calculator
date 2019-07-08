@@ -159,10 +159,8 @@
 
 
 
-	(function startCalculator(){
-		setInterval(function show(){
+		setInterval(function(){
 			operationScreen.show(calculator.join())
 			resultScreen.show(calculator.result)
 		},100)
-	}())
 }())
