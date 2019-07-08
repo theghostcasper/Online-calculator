@@ -140,8 +140,15 @@
 				}
 			}
 			else{ /* If operation */
-				equalFlag = 0;
-				calculator.add(buttonValue)
+				if(equalFlag == 1){
+					calculator.values = [calculator.result]
+					calculator.add(buttonValue)	
+					equalFlag = 0;
+				}
+				else{
+					calculator.add(buttonValue)	
+				}
+				
 			}
 		})
 	})
