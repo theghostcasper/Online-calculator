@@ -63,7 +63,11 @@
 	}
 
 
-
+	/* Code logic */
+	let calculator = new Calculator()
+	document.querySelectorAll('button').addEventListener('click', function(event){
+		
+	})
 
 
 }())
