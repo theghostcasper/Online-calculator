@@ -32,14 +32,10 @@ body,html{
 }
 button{
     flex: 1 1 25%;
-    height: 100px;
+    height:10vh;
 	color:orange;
 	background:black;
 	border:none;
-	padding:30px;
-	width:80px;
-	height: 80px;
 	text-align: center;
-	font-weight: bold;
-	font-size:25px;
+	font-size:1.8em;
 }
