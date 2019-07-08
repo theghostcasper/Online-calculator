@@ -3,11 +3,12 @@
 		/* Calculator entered values array */
 		let values = []
 		let result = 0
-		/* Calculator current operations */
-		const operations = ['+','/','*','-']
+		/* Calculator current operations, @TODO: implement add operation helper */
+		let operations = ['+','/','*','-']
 		/* Function to clear the calculator entered values */
 		function clear(){
 			this.values = []
+			this.result = 0
 		} 
 		/* Function to add a item to the values array */
 		function add(item){
@@ -63,11 +64,68 @@
 	}
 
 
+
+	/* Helper functions */
+	function click(buttonClass){
+		document.querySelector(buttonClass).click();
+	}
+
+	/* Event listener for the keyboard */
+	document.addEventListener('keydown',function(event){
+	    let key = event.keyCode - 96;
+	    buttons.forEach(function(button){
+	      if(key == button.attributes[0].value[6]){
+	        button.click();
+	      }
+	    })
+	    switch(key){
+	    	case 11:
+	    		click('.nplus')
+	    	break;
+	    	case 13:
+	    		click('.nminus')
+	    	break;
+	    	case 10:
+	    		click('.nmul')
+	    	break;
+	    	case 15:
+	    		click('.ndiv')
+	    	break;
+	    	case -29:
+	    	case -69:
+	    		click('.nc')
+	    	break;
+	    	case -83:
+	    		click('.nequal')
+	    	break;
+	    	case 14:
+	    	case 94:
+	    		click('.ndot')
+	    	break;
+	    }
+	})
+
 	/* Code logic */
 	let calculator = new Calculator()
-	document.querySelectorAll('button').addEventListener('click', function(event){
-		
+
+
+	let buttons = document.querySelectorAll('button');
+	buttons.forEach(function(button){
+		button.addEventListener('click',function(event){
+			let buttonValue = event.target.innerText
+			if(buttonValue == 'C'){
+				calculator.clear()
+			}
+			else if(buttonValue != '='){
+				calculator.add(buttonValue)
+			}
+			else if(buttonValue == '='){
+				calculator.calculate()
+			}
+		})
 	})
+
+
 
 
 }())
