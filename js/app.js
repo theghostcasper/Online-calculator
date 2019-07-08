@@ -83,7 +83,7 @@
 	document.addEventListener('keydown',function(event){
 	    let key = event.keyCode - 96;
 	    buttons.forEach(function(button){
-	      if(key == button.attributes[0].value[6]){
+	      if(key == button.attributes[0].value[1]){
 	        button.click();
 	      }
 	    })
@@ -118,9 +118,8 @@
 	let calculator = new Calculator()
 	let operationScreen = new Screen(document.querySelector('#operationScreen'));
 	let resultScreen = new Screen(document.querySelector('#resultScreen'));
-
-
 	let buttons = document.querySelectorAll('button');
+
 	let equalFlag = 0;
 	buttons.forEach(function(button){
 		button.addEventListener('click',function(event){
