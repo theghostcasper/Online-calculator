@@ -115,6 +115,8 @@
 
 	/* Code logic */
 	let calculator = new Calculator()
+	let operationScreen = new Screen(document.querySelector('operationScreen'));
+	let resultScreen = new Screen('resultScreen');
 
 
 	let buttons = document.querySelectorAll('button');
