@@ -153,15 +153,17 @@
 		})
 	})
 
-	function startCalculator(){
+
+
+
+
+
+
+
+	(function startCalculator(){
 		setInterval(function show(){
 			operationScreen.show(calculator.join())
 			resultScreen.show(calculator.result)
 		},100)
-	}
-	startCalculator()
-
-
-
-
+	}())
 }())
