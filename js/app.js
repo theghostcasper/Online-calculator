@@ -121,17 +121,27 @@
 
 
 	let buttons = document.querySelectorAll('button');
+	let equalFlag = 0;
 	buttons.forEach(function(button){
 		button.addEventListener('click',function(event){
 			let buttonValue = event.target.innerText
-			if(buttonValue == 'C'){
-				calculator.clear()
-			}
-			else if(buttonValue != '='){
-				calculator.add(buttonValue)
-			}
-			else if(buttonValue == '='){
+			if(buttonValue == '='){
+				equalFlag = 1;
 				calculator.calculate()
+			} else if(buttonValue == 'C'){
+				calculator.clear()
+			} else if(buttonValue != '=' && buttonValue <= '9' && buttonValue >= '0'){ /* If the button pressed is a number */
+				if(equalFlag == 0)
+					calculator.add(buttonValue)
+				else{
+					equalFlag = 0;
+					calculator.clear()
+					calculator.add(buttonValue)
+				}
+			}
+			else{ /* If operation */
+				equalFlag = 0;
+				calculator.add(buttonValue)
 			}
 		})
 	})
@@ -140,7 +150,7 @@
 		setInterval(function show(){
 			operationScreen.show(calculator.join())
 			resultScreen.show(calculator.result)
-		},10)
+		},100)
 	}
 	startCalculator()
 
