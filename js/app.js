@@ -63,7 +63,15 @@
 		}
 	}
 
+	function Screen(screen){
+		function show(something){
+			screen.innerText = something
+		}
 
+		return {
+			show
+		}
+	}
 
 	/* Helper functions */
 	function click(buttonClass){
