@@ -1,5 +1,69 @@
 (function(){
-	function calc(){
-		
+	function Calculator(){
+		/* Calculator entered values array */
+		let values = []
+		let result = 0
+		/* Calculator current operations */
+		const operations = ['+','/','*','-']
+		/* Function to clear the calculator entered values */
+		function clear(){
+			this.values = []
+		} 
+		/* Function to add a item to the values array */
+		function add(item){
+			this.values.push(item)
+		}
+		/* Function to return the join of the array */
+		function join(){
+			return this.values.join('')
+		}
+		/* Function to remove the duplicate operations after they have been entered */
+		function removeDuplicateOperation(){
+			/* Array that stores the locations of operations in the values array */
+			let includes = []
+			/* Array that stores the locations of operations that should be removed */
+			let toSplice = []
+			/* this loop stores the operation locations in the includes array */
+			this.values.forEach(function(value,index){
+				if(operations.includes(value)){
+					includes.push(index)
+				}
+			})
+			/* This loop stores the duplicate operations to be removed in the toSplice array */
+			for(let i=1, n= includes.length;i<n;i++){
+				if(includes[i]-1 == includes[i-1]){
+					toSplice.push(includes[i-1])
+				}
+			}
+			/* This loop decrements the toSplice array every step, because while removing 
+			data from the array, the array size is reduces, and so the indexes locations */
+			for(let i=0, n=toSplice.length;i<n; i++){
+				toSplice[i]-=i;
+			}
+			/* This loop finally splices the duplicate items in the array */
+			toSplice.forEach(function(item){
+				this.values.splice(item,1)
+			})
+		}
+		function calculate(){
+			/* If the last item in the values array is an operation, then remove that operation. */
+			if(operations.includes(this.values[this.values.length-1]))
+				this.values.pop();
+			/* Evaluate the answer */
+			this.result = eval(this.values.join(''))
+		}
+		return {
+			values,
+			clear,
+			add,
+			removeDuplicateOperation,
+			calculate,
+			result
+		}
 	}
+
+
+
+
+
 }())
